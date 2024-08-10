@@ -1,0 +1,44 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Game
+    network: sepolia
+    source:
+      address: "0x6Cfd9890146C2AF8922BD0E2421704567DA5f7e5"
+      abi: Game
+      startBlock: 6466932
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - FundsWithdrawn
+        - GameCreated
+        - GameWon
+        - GuessAttempted
+        - Joined
+        - PayoutIssued
+        - PlayerEliminated
+      abis:
+        - name: Game
+          file: ./abis/Game.json
+      eventHandlers:
+        - event: FundsWithdrawn(address,uint256,uint256)
+          handler: handleFundsWithdrawn
+        - event: GameCreated(uint256,address[],uint256,uint256,uint256)
+          handler: handleGameCreated
+        - event: GameWon(uint256,address,uint256)
+          handler: handleGameWon
+        - event: GuessAttempted(uint256,address,uint256,uint256,bool,uint256)
+          handler: handleGuessAttempted
+        - event: Joined(uint256,address,uint256,uint256)
+          handler: handleJoined
+        - event: PayoutIssued(uint256,address,uint256,uint256)
+          handler: handlePayoutIssued
+        - event: PlayerEliminated(uint256,address,uint256)
+          handler: handlePlayerEliminated
+      file: ./src/game.ts

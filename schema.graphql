@@ -1,0 +1,76 @@
+type FundsWithdrawn @entity(immutable: true) {
+  id: Bytes!
+  owner: Bytes! # address
+  amount: BigInt! # uint256
+  timestamp: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type GameCreated @entity(immutable: true) {
+  id: Bytes!
+  gameId: BigInt! # uint256
+  players: [Bytes!]! # address[]
+  totalPlayers: BigInt! # uint256
+  entryFee: BigInt! # uint256
+  timestamp: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type GameWon @entity(immutable: true) {
+  id: Bytes!
+  gameId: BigInt! # uint256
+  playerAddress: Bytes! # address
+  timestamp: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type GuessAttempted @entity(immutable: true) {
+  id: Bytes!
+  gameId: BigInt! # uint256
+  playerAddress: Bytes! # address
+  guessNumber: BigInt! # uint256
+  attemptsLeft: BigInt! # uint256
+  isCorrect: Boolean! # bool
+  timestamp: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Joined @entity(immutable: true) {
+  id: Bytes!
+  gameId: BigInt! # uint256
+  playerAddress: Bytes! # address
+  entryFee: BigInt! # uint256
+  timestamp: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type PayoutIssued @entity(immutable: true) {
+  id: Bytes!
+  gameId: BigInt! # uint256
+  winnerAddress: Bytes! # address
+  prizeAmount: BigInt! # uint256
+  timestamp: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type PlayerEliminated @entity(immutable: true) {
+  id: Bytes!
+  gameId: BigInt! # uint256
+  playerAddress: Bytes! # address
+  timestamp: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
