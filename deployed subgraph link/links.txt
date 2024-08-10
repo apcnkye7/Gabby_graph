@@ -1,0 +1,3 @@
+subgraph_slug; gabby_subgraph
+base url; https://api.studio.thegraph.com/query
+Query url; https://api.studio.thegraph.com/query/84980/gabby_subgraph/version/latest
